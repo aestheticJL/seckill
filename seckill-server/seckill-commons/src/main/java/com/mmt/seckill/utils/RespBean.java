@@ -1,4 +1,4 @@
-package com.mmt.seckill.exception;
+package com.mmt.seckill.utils;
 
 public class RespBean {
     Integer status;
