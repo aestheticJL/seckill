@@ -1,4 +1,4 @@
-package com.mmt.seckill.config;
+package com.mmt.seckill.config.exception;
 
 import com.mmt.seckill.utils.RespBean;
 import org.springframework.web.bind.ServletRequestBindingException;

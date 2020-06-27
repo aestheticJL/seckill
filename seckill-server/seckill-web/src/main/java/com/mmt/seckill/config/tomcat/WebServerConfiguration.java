@@ -1,4 +1,4 @@
-package com.mmt.seckill.config;
+package com.mmt.seckill.config.tomcat;
 
 import org.apache.catalina.connector.Connector;
 import org.apache.coyote.http11.Http11NioProtocol;

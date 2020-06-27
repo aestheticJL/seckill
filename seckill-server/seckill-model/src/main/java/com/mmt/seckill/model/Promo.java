@@ -15,6 +15,7 @@ public class Promo extends Model<Promo> {
     private Timestamp startDate;
     private Integer itemId;
     private Double promoItemPrice;
+    private Timestamp endDate;
 
     public Integer getId() {
         return id;
@@ -63,6 +64,4 @@ public class Promo extends Model<Promo> {
     public void setEndDate(Timestamp endDate) {
         this.endDate = endDate;
     }
-
-    private Timestamp endDate;
 }
