@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 @TableName("order_info")
 public class OrderInfo extends Model<OrderInfo> {
     @TableId(type = IdType.INPUT)
-    private String id;
+    private Integer id;
     private Integer userId;
     private Integer itemId;
     private Double itemPrice;
@@ -16,11 +16,11 @@ public class OrderInfo extends Model<OrderInfo> {
     private Double orderPrice;
     private Integer PromoId;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
