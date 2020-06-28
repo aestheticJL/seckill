@@ -1,8 +1,8 @@
 package com.mmt.seckill.service;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.mmt.seckill.mapper.*;
-import com.mmt.seckill.model.ItemStock;
+import com.mmt.seckill.mapper.OrderInfoMapper;
+import com.mmt.seckill.mapper.PromoMapper;
+import com.mmt.seckill.model.Item;
 import com.mmt.seckill.model.OrderInfo;
 import com.mmt.seckill.utils.RespBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,36 +12,45 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class OrderService {
     @Autowired
-    private ItemMapper itemMapper;
+    private UserService userService;
     @Autowired
-    private UserMapper userMapper;
+    private ItemStockService itemStockService;
     @Autowired
-    private ItemStockMapper itemStockMapper;
-    @Autowired
-    private PromoMapper promoMapper;
+    private PromoService promoService;
     @Autowired
     private OrderInfoMapper orderInfoMapper;
+    @Autowired
+    private CacheService cacheService;
+    @Autowired
+    private ItemService itemService;
 
     @Transactional
     public RespBean createOrder(int userId, Integer itemId, Integer amount, Integer promoId) {
-        if (itemMapper.selectById(itemId) == null) {
-            throw new RuntimeException("商品不存在");
+        Item item;
+        item = (Item) cacheService.getCommonCahe("item_" + itemId);
+        if (item == null) {
+            item = itemService.getItemById(itemId);
+            if (item == null) {
+                throw new RuntimeException("商品不存在");
+            } else {
+                cacheService.setCommonCache("item_" + itemId, item);
+            }
         }
-        if (userMapper.selectById(userId) == null) {
+        if (userService.selectById(userId) == null) {
             throw new RuntimeException("用户不存在");
         }
-        ItemStock itemStock = itemStockMapper.selectOne(new QueryWrapper<ItemStock>().eq("item_id", itemId));
-        if (amount > itemStock.getStock()) {
+
+        if (!itemStockService.decreaseStock(itemId, amount)) {
             throw new RuntimeException("库存不足");
         }
-        itemStockMapper.decreaseStock(itemId, amount);
+
         OrderInfo order = new OrderInfo();
         order.setItemId(itemId);
         order.setUserId(userId);
         order.setAmount(amount);
         order.setPromoId(promoId);
-        order.setItemPrice(itemMapper.selectById(itemId).getPrice());
-        order.setOrderPrice(promoMapper.selectById(promoId).getPromoItemPrice());
+        order.setItemPrice(item.getPrice());
+        order.setOrderPrice(promoService.selectPromoItemPriceById(promoId));
         if (orderInfoMapper.insert(order) == 1) {
             return RespBean.ok("下单成功");
         } else {

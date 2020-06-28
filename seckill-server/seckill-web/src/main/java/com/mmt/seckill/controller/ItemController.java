@@ -42,7 +42,9 @@ public class ItemController {
 
     @PostMapping("/")
     public RespBean createItem(@RequestBody Item item) {
-        cacheService.setCommonCache("items", null);
+        if (cacheService.getCommonCahe("items") != null) {
+            cacheService.setCommonCache("items", null);
+        }
         return itemService.createItem(item);
     }
 }

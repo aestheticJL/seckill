@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 
-@TableName("User_info")
+@TableName("user_info")
 public class UserInfo extends Model<UserInfo> {
     @TableId(type = IdType.AUTO)
     private Integer id;
