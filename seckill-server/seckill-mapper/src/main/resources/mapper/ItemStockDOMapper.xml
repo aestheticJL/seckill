@@ -6,7 +6,10 @@
         <result column="stock" jdbcType="INTEGER" property="stock"/>
         <result column="item_id" jdbcType="INTEGER" property="itemId"/>
     </resultMap>
-    <update id="decreaseStock">
+    <update id="decreaseStockInMySQL">
       UPDATE item_stock SET stock = stock - #{amount,jdbcType=INTEGER} WHERE item_id = #{itemId,jdbcType=INTEGER} AND stock >=#{amount,jdbcType=INTEGER}
   </update>
+    <select id="getItemStockByItemId" resultType="int">
+        SELECT stock FROM item_stock WHERE item_id = #{id};
+    </select>
 </mapper>

@@ -54,6 +54,8 @@ public class RedisConfig implements Serializable {
         Map<String, RedisCacheConfiguration> redisCacheConfigurationMap = new HashMap<>();
         //SsoCache和BasicDataCache进行过期时间配置
         redisCacheConfigurationMap.put("items", this.getRedisCacheConfigurationWithTtl(30 * 60));
+        redisCacheConfigurationMap.put("promoItemPrice", this.getRedisCacheConfigurationWithTtl(10 * 60));
+        redisCacheConfigurationMap.put("user", this.getRedisCacheConfigurationWithTtl(10 * 60));
         return redisCacheConfigurationMap;
     }
 

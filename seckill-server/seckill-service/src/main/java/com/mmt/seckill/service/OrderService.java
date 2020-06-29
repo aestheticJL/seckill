@@ -1,9 +1,9 @@
 package com.mmt.seckill.service;
 
 import com.mmt.seckill.mapper.OrderInfoMapper;
-import com.mmt.seckill.mapper.PromoMapper;
 import com.mmt.seckill.model.Item;
 import com.mmt.seckill.model.OrderInfo;
+import com.mmt.seckill.model.Promo;
 import com.mmt.seckill.utils.RespBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,8 +39,11 @@ public class OrderService {
         if (userService.selectById(userId) == null) {
             throw new RuntimeException("用户不存在");
         }
-
-        if (!itemStockService.decreaseStock(itemId, amount)) {
+        Promo promo = promoService.getPromoById(promoId);
+        if (promo == null) {
+            throw new RuntimeException("活动未开始");
+        }
+        if (!itemStockService.decreaseStockInRedis(itemId, amount)) {
             throw new RuntimeException("库存不足");
         }
 
@@ -50,7 +53,7 @@ public class OrderService {
         order.setAmount(amount);
         order.setPromoId(promoId);
         order.setItemPrice(item.getPrice());
-        order.setOrderPrice(promoService.selectPromoItemPriceById(promoId));
+        order.setOrderPrice(promo.getPromoItemPrice());
         if (orderInfoMapper.insert(order) == 1) {
             return RespBean.ok("下单成功");
         } else {

@@ -6,5 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 
 public interface ItemStockMapper extends BaseMapper<ItemStock> {
-    boolean decreaseStock(@Param("itemId") Integer itemId, @Param("amount") Integer amount);
+    boolean decreaseStockInMySQL(@Param("itemId") Integer itemId, @Param("amount") Integer amount);
+
+    int getItemStockByItemId(int id);
 }

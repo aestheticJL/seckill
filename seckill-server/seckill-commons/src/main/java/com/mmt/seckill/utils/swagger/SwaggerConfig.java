@@ -1,4 +1,4 @@
-package com.mmt.seckill.config.swagger;
+package com.mmt.seckill.utils.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

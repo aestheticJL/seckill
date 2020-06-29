@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@CacheConfig(cacheNames = "items")
+@CacheConfig(cacheNames = "item")
 public class ItemService {
     @Autowired
     private ItemMapper itemMapper;
