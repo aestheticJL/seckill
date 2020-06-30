@@ -4,7 +4,6 @@ import com.mmt.seckill.mapper.OrderInfoMapper;
 import com.mmt.seckill.model.Item;
 import com.mmt.seckill.model.OrderInfo;
 import com.mmt.seckill.model.Promo;
-import com.mmt.seckill.utils.RespBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,9 +22,11 @@ public class OrderService {
     private CacheService cacheService;
     @Autowired
     private ItemService itemService;
+    @Autowired
+    private StockLogService stockLogService;
 
     @Transactional
-    public RespBean createOrder(int userId, Integer itemId, Integer amount, Integer promoId) {
+    public boolean createOrder(int userId, Integer itemId, Integer amount, Integer promoId, String stockLogId) {
         Item item;
         item = (Item) cacheService.getCommonCahe("item_" + itemId);
         if (item == null) {
@@ -54,11 +55,12 @@ public class OrderService {
         order.setPromoId(promoId);
         order.setItemPrice(item.getPrice());
         order.setOrderPrice(promo.getPromoItemPrice());
-        if (orderInfoMapper.insert(order) == 1) {
-            return RespBean.ok("下单成功");
-        } else {
-            return RespBean.error("下单失败");
-        }
 
+        if (orderInfoMapper.insert(order) == 1) {
+            stockLogService.changeStatus(stockLogId, 1);
+            return true;
+        } else {
+            throw new RuntimeException("下单失败");
+        }
     }
 }

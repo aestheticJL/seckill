@@ -2,6 +2,7 @@ package com.mmt.seckill.service.rocketMQ;
 
 import com.alibaba.fastjson.JSON;
 import com.mmt.seckill.mapper.ItemStockMapper;
+import com.mmt.seckill.service.ItemStockService;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
@@ -20,7 +21,7 @@ import java.util.Map;
 @Component
 public class MqConsumer {
     @Autowired
-    private ItemStockMapper itemStockMapper;
+    private ItemStockService itemStockService;
 
     private DefaultMQPushConsumer consumer;
 
@@ -40,11 +41,11 @@ public class MqConsumer {
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgList, ConsumeConcurrentlyContext consumeConcurrentlyContext) {
                 //消费，扣取mysql库存
                 Message message = msgList.get(0);
-                String jsonString = new String(message.getBody());
-                Map<String, Object> map = JSON.parseObject(jsonString, Map.class);
+                String jsonMessage = new String(message.getBody());
+                Map<String, Object> map = JSON.parseObject(jsonMessage, Map.class);
                 int itemId = (int) map.get("itemId");
                 int amount = (int) map.get("amount");
-                itemStockMapper.decreaseStockInMySQL(itemId, amount);
+                itemStockService.decreaseStockInMySQL(itemId, amount);
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
             }
         });
