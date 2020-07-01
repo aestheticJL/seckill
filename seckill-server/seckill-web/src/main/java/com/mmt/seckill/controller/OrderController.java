@@ -1,8 +1,8 @@
 package com.mmt.seckill.controller;
 
-import com.mmt.seckill.model.Item;
-import com.mmt.seckill.model.Promo;
-import com.mmt.seckill.service.*;
+import com.mmt.seckill.service.PromoService;
+import com.mmt.seckill.service.StockLogService;
+import com.mmt.seckill.service.UserService;
 import com.mmt.seckill.service.rocketMQ.MqProducer;
 import com.mmt.seckill.utils.RespBean;
 import org.springframework.beans.factory.annotation.Autowired;

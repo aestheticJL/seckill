@@ -39,7 +39,7 @@ public class OrderService {
         if (promo == null) {
             throw new RuntimeException("活动未开始");
         }
-        if (!itemStockService.decreaseStockInRedis(itemId, amount)) {
+        if (!itemStockService.decreaseStockInRedis(itemId, amount,promoId)) {
             throw new RuntimeException("库存不足");
         }
         OrderInfo order = new OrderInfo();
