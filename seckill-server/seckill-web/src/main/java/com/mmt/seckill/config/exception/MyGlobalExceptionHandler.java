@@ -2,13 +2,15 @@ package com.mmt.seckill.config.exception;
 
 import com.mmt.seckill.utils.RespBean;
 import org.springframework.web.bind.ServletRequestBindingException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-@RestControllerAdvice
+@ControllerAdvice
 public class MyGlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
+    @ResponseBody
     public RespBean customException(Exception e) {
         e.printStackTrace();
         if (e instanceof ServletRequestBindingException) {

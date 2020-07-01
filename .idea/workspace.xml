@@ -2,19 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e48fc44b-e72c-45ce-9a6c-51c4a0c6f461" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/seckill-server/seckill-mapper/src/main/java/com/mmt/seckill/mapper/StockLogMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seckill-server/seckill-model/src/main/java/com/mmt/seckill/model/StockLog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/StockLogService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seckill-server/seckill-mapper/src/main/java/com/mmt/seckill/mapper/SequenceInfoMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seckill-server/seckill-model/src/main/java/com/mmt/seckill/model/SequenceInfo.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/ItemStockService.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/ItemStockService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/OrderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/PromoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/PromoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/rocketMQ/MqConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/rocketMQ/MqConsumer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/rocketMQ/MqProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/rocketMQ/MqProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-server/seckill-service/target/classes/com/mmt/seckill/service/OrderService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-server/seckill-service/target/classes/com/mmt/seckill/service/PromoService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-server/seckill-service/target/classes/com/mmt/seckill/service/rocketMQ/MqProducer$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-server/seckill-service/target/classes/com/mmt/seckill/service/rocketMQ/MqProducer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/config/exception/MyGlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/config/exception/MyGlobalExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/controller/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/controller/PromoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/controller/PromoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-server/seckill-web/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-server/seckill-web/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-server/seckill-web/target/classes/com/mmt/seckill/config/exception/MyGlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill-server/seckill-web/target/classes/com/mmt/seckill/config/exception/MyGlobalExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill-server/seckill-web/target/classes/com/mmt/seckill/controller/OrderController.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -34,13 +36,27 @@
   <component name="CompilerWorkspaceConfiguration">
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="OrderService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/OrderService.java">
+      <file leaf-file-name="OrderController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/controller/OrderController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="537">
-              <caret line="60" selection-start-line="60" selection-end-line="60" />
+            <state relative-caret-position="366">
+              <caret line="52" column="9" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -51,8 +67,8 @@
       <file leaf-file-name="ItemStockService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/ItemStockService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="25" column="33" lean-forward="true" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+            <state relative-caret-position="285">
+              <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -63,17 +79,29 @@
       <file leaf-file-name="PromoService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/PromoService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="16" column="36" lean-forward="true" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+            <state relative-caret-position="485">
+              <caret line="64" column="106" selection-start-line="64" selection-start-column="40" selection-end-line="64" selection-end-column="106" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrderController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/controller/OrderController.java">
+      <file leaf-file-name="OrderService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/OrderService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="29" column="39" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
+            <state relative-caret-position="689">
+              <caret line="41" column="37" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PromoController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/controller/PromoController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="494">
+              <caret line="30" column="31" lean-forward="true" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,8 +112,8 @@
       <file leaf-file-name="MqProducer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/rocketMQ/MqProducer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="103" column="36" selection-start-line="103" selection-start-column="36" selection-end-line="103" selection-end-column="36" />
+            <state>
+              <caret line="44" column="29" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -123,7 +151,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/config/WebServerConfiguration.java" />
         <option value="$PROJECT_DIR$/seckill-server/seckill-model/pom.xml" />
         <option value="$PROJECT_DIR$/seckill-server/seckill-mapper/src/main/java/com/mmt/seckill/mapper/ItemMapper.java" />
@@ -156,7 +183,6 @@
         <option value="$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/config/redis/RedisConfig.java" />
         <option value="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/ItemService.java" />
         <option value="$PROJECT_DIR$/seckill-server/seckill-commons/pom.xml" />
-        <option value="$PROJECT_DIR$/seckill-server/seckill-web/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/seckill-server/seckill-mapper/src/main/resources/mapper/ItemStockDOMapper.xml" />
         <option value="$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/controller/ItemServiceImpl.java" />
         <option value="$PROJECT_DIR$/seckill-server/seckill-commons/src/main/java/com/mmt/seckill/utils/rocketMQ/MqProducer.java" />
@@ -164,15 +190,17 @@
         <option value="$PROJECT_DIR$/seckill-server/seckill-commons/src/main/java/com/mmt/seckill/utils/rocketMQ/MqConsumer.java" />
         <option value="$PROJECT_DIR$/seckill-server/seckill-mapper/src/main/java/com/mmt/seckill/mapper/ItemStockMapper.java" />
         <option value="$PROJECT_DIR$/seckill-server/seckill-web/src/test/java/Test.java" />
-        <option value="$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/controller/PromoController.java" />
         <option value="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/rocketMQ/MqConsumer.java" />
         <option value="$PROJECT_DIR$/seckill-server/seckill-model/src/main/java/com/mmt/seckill/model/StockLog.java" />
         <option value="$PROJECT_DIR$/seckill-server/seckill-mapper/src/main/java/com/mmt/seckill/mapper/StockLogMapper.java" />
         <option value="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/StockLogService.java" />
-        <option value="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/PromoService.java" />
-        <option value="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/OrderService.java" />
+        <option value="$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/config/exception/MyGlobalExceptionHandler.java" />
+        <option value="$PROJECT_DIR$/seckill-server/seckill-web/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/rocketMQ/MqProducer.java" />
         <option value="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/ItemStockService.java" />
+        <option value="$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/controller/PromoController.java" />
+        <option value="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/OrderService.java" />
+        <option value="$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/PromoService.java" />
         <option value="$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/controller/OrderController.java" />
       </list>
     </option>
@@ -208,8 +236,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -226,6 +252,46 @@
               <item name="seckill" type="b2602c69:ProjectViewProjectNode" />
               <item name="seckill" type="462c0819:PsiDirectoryNode" />
               <item name="seckill-server" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="seckill" type="b2602c69:ProjectViewProjectNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill-server" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="seckill" type="b2602c69:ProjectViewProjectNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill-server" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="seckill" type="b2602c69:ProjectViewProjectNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill-server" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="seckill" type="b2602c69:ProjectViewProjectNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill-server" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="seckill" type="b2602c69:ProjectViewProjectNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill-server" type="462c0819:PsiDirectoryNode" />
               <item name="seckill-web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -261,6 +327,17 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="seckill" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="seckill" type="b2602c69:ProjectViewProjectNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill-server" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="seckill" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="seckill" type="b2602c69:ProjectViewProjectNode" />
@@ -301,7 +378,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -320,22 +399,22 @@
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\学习\XM\seckill\seckill-server\seckill-mapper\src\main\resources\mapper" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="" />
-      <recent name="com.mmt.seckill.model" />
-      <recent name="com.mmt.seckill.config" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\学习\XM\seckill\seckill-server\seckill-web\src\main\java\com\mmt\seckill\controller" />
       <recent name="E:\学习\XM\seckill\seckill-server\seckill-mapper\src\main\resources" />
       <recent name="E:\学习\XM\seckill\seckill-server\seckill-web\src\main\java\com\mmt\seckill" />
       <recent name="E:\学习\XM\seckill\seckill-server\seckill-web\src\main\java\com\mmt\seckill\config" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+      <recent name="com.mmt.seckill.model" />
+      <recent name="com.mmt.seckill.config" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\学习\XM\seckill\seckill-server\seckill-mapper\src\main\resources\mapper" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -434,12 +513,13 @@
       <workItem from="1593498223553" duration="934000" />
       <workItem from="1593504280862" duration="3935000" />
       <workItem from="1593509182539" duration="3760000" />
-      <workItem from="1593524180945" duration="2708000" />
+      <workItem from="1593524180945" duration="3681000" />
+      <workItem from="1593586311282" duration="9637000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79266000" />
+    <option name="totallyTimeSpent" value="89876000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -452,11 +532,11 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Database" order="3" weight="0.3297587" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39942938" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.30955777" />
       <window_info anchor="right" id="Redis Explorer" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.32952926" />
@@ -519,7 +599,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="8" />
+      <option name="time" value="11" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -579,13 +659,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
           <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/config/exception/MyGlobalExceptionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -682,13 +755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_221/src.zip!/java/sql/Timestamp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="77" column="38" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/seckill-server/seckill-web/src/test/java/Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -700,13 +766,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
           <caret line="16" column="33" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/controller/PromoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="9" column="62" lean-forward="true" selection-start-line="9" selection-start-column="62" selection-end-line="9" selection-end-column="62" />
         </state>
       </provider>
     </entry>
@@ -765,13 +824,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seckill-server/seckill-web/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/seckill-server/seckill-mapper/src/main/resources/mapper/ItemStockDOMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -790,9 +842,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -813,17 +862,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/PromoService.java">
+    <entry file="file://$PROJECT_DIR$/seckill-server/seckill-web/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="16" column="36" lean-forward="true" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+        <state relative-caret-position="551">
+          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/rocketMQ/MqProducer.java">
+    <entry file="file://$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/config/exception/MyGlobalExceptionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="103" column="36" selection-start-line="103" selection-start-column="36" selection-end-line="103" selection-end-column="36" />
+        <state relative-caret-position="190">
+          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_221/src.zip!/java/sql/Timestamp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9685">
+          <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/controller/PromoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="30" column="31" lean-forward="true" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -832,8 +898,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/ItemStockService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="25" column="33" lean-forward="true" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+        <state relative-caret-position="285">
+          <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/rocketMQ/MqProducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="44" column="29" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -842,18 +918,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/OrderService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
+        <state relative-caret-position="689">
+          <caret line="41" column="37" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/seckill-server/seckill-service/src/main/java/com/mmt/seckill/service/PromoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="64" column="106" selection-start-line="64" selection-start-column="40" selection-end-line="64" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/seckill-server/seckill-web/src/main/java/com/mmt/seckill/controller/OrderController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="29" column="39" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
+        <state relative-caret-position="366">
+          <caret line="52" column="9" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

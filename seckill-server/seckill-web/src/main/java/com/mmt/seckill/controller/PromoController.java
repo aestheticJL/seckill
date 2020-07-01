@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import java.sql.Timestamp;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/promo")
@@ -20,8 +22,9 @@ public class PromoController {
     @PostMapping("/")
     public RespBean createPromo(@RequestParam("item_id") int itemId, @RequestParam("promoItemPrice") double promoItemPrice) {
         Promo promo = new Promo();
-        promo.setStartDate(new Timestamp(2020, 6, 29, 22, 15, 0, 0));
-        promo.setEndDate(new Timestamp(2020, 6, 29, 22, 20, 0, 0));
+        Timestamp startDate = new Timestamp(new Date().getTime());
+        promo.setStartDate(startDate);
+        promo.setEndDate(new Timestamp(startDate.getTime() + 60 * 60));
         promo.setItemId(itemId);
         promo.setPromoItemPrice(promoItemPrice);
         promo.setPromoName("抢购活动" + itemId);

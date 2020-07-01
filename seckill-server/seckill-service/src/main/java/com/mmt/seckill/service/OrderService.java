@@ -11,17 +11,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class OrderService {
     @Autowired
-    private UserService userService;
-    @Autowired
     private ItemStockService itemStockService;
     @Autowired
     private PromoService promoService;
     @Autowired
-    private OrderInfoMapper orderInfoMapper;
-    @Autowired
     private CacheService cacheService;
     @Autowired
     private ItemService itemService;
+    @Autowired
+    private OrderInfoMapper orderInfoMapper;
     @Autowired
     private StockLogService stockLogService;
 
@@ -37,9 +35,6 @@ public class OrderService {
                 cacheService.setCommonCache("item_" + itemId, item);
             }
         }
-        if (userService.selectById(userId) == null) {
-            throw new RuntimeException("用户不存在");
-        }
         Promo promo = promoService.getPromoById(promoId);
         if (promo == null) {
             throw new RuntimeException("活动未开始");
@@ -47,7 +42,6 @@ public class OrderService {
         if (!itemStockService.decreaseStockInRedis(itemId, amount)) {
             throw new RuntimeException("库存不足");
         }
-
         OrderInfo order = new OrderInfo();
         order.setItemId(itemId);
         order.setUserId(userId);
