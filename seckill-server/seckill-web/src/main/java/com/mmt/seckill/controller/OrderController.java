@@ -1,5 +1,6 @@
 package com.mmt.seckill.controller;
 
+import com.google.common.util.concurrent.RateLimiter;
 import com.mmt.seckill.service.PromoService;
 import com.mmt.seckill.service.StockLogService;
 import com.mmt.seckill.service.UserService;
@@ -29,9 +30,12 @@ public class OrderController {
 
     private ThreadPoolExecutor threadPoolExecutor;
 
+    private RateLimiter orderCreateRateLimiter;
+
     @PostConstruct
     public void initThreadPoolExecutor() {
         threadPoolExecutor = new ThreadPoolExecutor(20, 20, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
+        orderCreateRateLimiter = RateLimiter.create(200);
     }
 
     @PostMapping("/itemToken")
@@ -54,6 +58,9 @@ public class OrderController {
                             @RequestParam(name = "amount") Integer amount,
                             @RequestParam(name = "promoId", required = false) Integer promoId,
                             @RequestParam(name = "promoToken", required = false) String promoToken) {
+        if (orderCreateRateLimiter.tryAcquire()) {
+            throw new RuntimeException("活动太火爆，请稍后再试");
+        }
         String redisToken = (String) redisTemplate.opsForValue().get("promo" + promoId + "_item" + itemId + "_user" + userId + "_token");
         if (redisToken == null) {
             throw new RuntimeException("令牌检测失败");
