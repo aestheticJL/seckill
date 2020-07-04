@@ -20,7 +20,7 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.mmt.seckill.controller"))
                 .paths(PathSelectors.any())
                 .build().apiInfo(new ApiInfoBuilder()
-                        .title("my-own-douban-swagger")
+                        .title("my-swagger")
                         .description("接口信息")
                         .version("1.0")
                         .build());
