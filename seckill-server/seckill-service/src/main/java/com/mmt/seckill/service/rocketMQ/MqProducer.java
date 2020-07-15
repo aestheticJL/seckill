@@ -11,6 +11,7 @@ import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -24,7 +25,7 @@ public class MqProducer {
     private OrderService orderService;
 
     @Autowired
-    private StockLogMapper stockLogMapper;
+    private RedisTemplate redisTemplate;
 
     @Autowired
     private StockLogService stockLogService;
@@ -70,14 +71,14 @@ public class MqProducer {
                 String jsonMessage = new String(messageExt.getBody());
                 Map<String, Object> map = JSON.parseObject(jsonMessage, Map.class);
                 String stockLogId = (String) map.get("stockLogId");
-                StockLog stockLog = stockLogMapper.selectById(stockLogId);
-                if (stockLog == null) {
+                Integer status = (Integer) redisTemplate.opsForValue().get(stockLogId);
+                if (status == null) {
                     return LocalTransactionState.UNKNOW;
                 }
-                if (stockLog.getStatus() == 1) {
+                if (status == 1) {
                     return LocalTransactionState.COMMIT_MESSAGE;
                 }
-                if (stockLog.getStatus() == 0) {
+                if (status == 0) {
                     return LocalTransactionState.UNKNOW;
                 }
                 return LocalTransactionState.ROLLBACK_MESSAGE;

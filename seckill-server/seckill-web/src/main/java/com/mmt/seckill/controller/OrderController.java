@@ -1,9 +1,9 @@
 package com.mmt.seckill.controller;
 
 import com.google.common.util.concurrent.RateLimiter;
-import com.mmt.seckill.service.PromoService;
-import com.mmt.seckill.service.StockLogService;
-import com.mmt.seckill.service.UserService;
+import com.mmt.seckill.model.Item;
+import com.mmt.seckill.model.Promo;
+import com.mmt.seckill.service.*;
 import com.mmt.seckill.service.rocketMQ.MqProducer;
 import com.mmt.seckill.utils.RespBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +27,10 @@ public class OrderController {
     private PromoService promoService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private CacheService cacheService;
+    @Autowired
+    private ItemService itemService;
 
     private ThreadPoolExecutor threadPoolExecutor;
 
@@ -45,6 +49,20 @@ public class OrderController {
         if (userService.selectById(userId) == null) {
             throw new RuntimeException("用户不存在");
         }
+        Item item;
+        item = (Item) cacheService.getCommonCahe("item_" + itemId);
+        if (item == null) {
+            item = itemService.getItemById(itemId);
+            if (item == null) {
+                throw new RuntimeException("商品不存在");
+            } else {
+                cacheService.setCommonCache("item_" + itemId, item);
+            }
+        }
+        Promo promo = promoService.getPromoById(promoId);
+        if (promo == null) {
+            throw new RuntimeException("活动未开始");
+        }
         String promoToken = promoService.createPromoToken(promoId, itemId, userId);
         if (promoToken == null) {
             throw new RuntimeException("抢购失败");
@@ -53,12 +71,12 @@ public class OrderController {
     }
 
     @PostMapping("/order")
-    public void createOrder(@RequestParam(name = "userId") Integer userId,
+    public RespBean createOrder(@RequestParam(name = "userId") Integer userId,
                             @RequestParam(name = "itemId") Integer itemId,
                             @RequestParam(name = "amount") Integer amount,
                             @RequestParam(name = "promoId", required = false) Integer promoId,
                             @RequestParam(name = "promoToken", required = false) String promoToken) {
-        if (orderCreateRateLimiter.tryAcquire()) {
+        if (!orderCreateRateLimiter.tryAcquire()) {
             throw new RuntimeException("活动太火爆，请稍后再试");
         }
         String redisToken = (String) redisTemplate.opsForValue().get("promo" + promoId + "_item" + itemId + "_user" + userId + "_token");
@@ -81,7 +99,7 @@ public class OrderController {
             }
         });
         try {
-            future.get();
+            return (RespBean) future.get();
         } catch (InterruptedException e) {
             throw new RuntimeException("未知错误");
         } catch (ExecutionException e) {

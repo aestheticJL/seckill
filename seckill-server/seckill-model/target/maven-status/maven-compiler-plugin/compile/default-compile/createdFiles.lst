@@ -1,0 +1,6 @@
+com\mmt\seckill\model\ItemStock.class
+com\mmt\seckill\model\StockLog.class
+com\mmt\seckill\model\Item.class
+com\mmt\seckill\model\UserInfo.class
+com\mmt\seckill\model\Promo.class
+com\mmt\seckill\model\OrderInfo.class

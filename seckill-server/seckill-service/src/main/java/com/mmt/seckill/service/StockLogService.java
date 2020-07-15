@@ -3,32 +3,26 @@ package com.mmt.seckill.service;
 import com.mmt.seckill.mapper.StockLogMapper;
 import com.mmt.seckill.model.StockLog;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class StockLogService {
     @Autowired
     private StockLogMapper stockLogMapper;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     public String createStockLog(Integer itemId, Integer amount) {
-        StockLog stockLog = new StockLog();
-        stockLog.setAmount(amount);
-        stockLog.setItemId(itemId);
-        stockLog.setStatus(0);
-        stockLog.setStockLogId(UUID.randomUUID().toString().replace("-", ""));
-        stockLogMapper.insert(stockLog);
-        return stockLog.getStockLogId();
+        String stockLogId = UUID.randomUUID().toString().replace("-", "");
+        redisTemplate.opsForValue().set(stockLogId, 0, 60, TimeUnit.SECONDS);
+        return stockLogId;
     }
 
-    public boolean changeStatus(String stockLogId, Integer status) {
-        StockLog stockLog = stockLogMapper.selectById(stockLogId);
-        stockLog.setStatus(status);
-        if (stockLogMapper.updateById(stockLog) == 1) {
-            return true;
-        } else {
-            throw new RuntimeException("修改流水状态失败");
-        }
+    public void changeStatus(String stockLogId, Integer status) {
+        redisTemplate.opsForValue().set(stockLogId, status,60,TimeUnit.SECONDS);
     }
 }

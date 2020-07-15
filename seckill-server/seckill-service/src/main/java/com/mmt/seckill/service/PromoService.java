@@ -1,6 +1,7 @@
 package com.mmt.seckill.service;
 
 import com.mmt.seckill.mapper.PromoMapper;
+import com.mmt.seckill.model.Item;
 import com.mmt.seckill.model.ItemStock;
 import com.mmt.seckill.model.Promo;
 import com.mmt.seckill.utils.RespBean;
@@ -37,7 +38,7 @@ public class PromoService {
             Integer itemStock = itemStockService.getItemStockByItemId(promo.getItemId());
             redisTemplate.opsForValue().set("promo" + promo.getId() + "_item" + promo.getItemId() + "_stock", itemStock, 60 * 60, TimeUnit.SECONDS);
             //设置大闸
-            redisTemplate.opsForValue().set("promo" + promo.getId() + "_door_count", itemStock * 5);
+            redisTemplate.opsForValue().set("promo" + promo.getId() + "_door_count", itemStock * 5, 60 * 60, TimeUnit.SECONDS);
             return RespBean.ok("活动创建成功");
         } else {
             return RespBean.error("活动创建失败");
@@ -49,10 +50,6 @@ public class PromoService {
         if (redisTemplate.hasKey("promo_item_stock_invalid" + itemId)) {
             return null;
         }
-//        Promo promo = getPromoById(promoId);
-//        if (!(promo.getStartDate().after(new Timestamp(new Date().getTime())) && promo.getEndDate().before(new Timestamp(new Date().getTime())))) {
-//            return null;
-//        }
         if (userService.selectById(userId) == null) {
             return null;
         }

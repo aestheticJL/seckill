@@ -24,7 +24,10 @@ public class OrderService {
     private StockLogService stockLogService;
 
     @Transactional
-    public boolean createOrder(int userId, Integer itemId, Integer amount, Integer promoId, String stockLogId) {
+    public boolean createOrder(int userId, Integer itemId, Integer amount, Integer promoId, String stockLogId) throws InterruptedException {
+        if (!itemStockService.decreaseStockInRedis(itemId, amount, promoId)) {
+            throw new RuntimeException("库存不足");
+        }
         Item item;
         item = (Item) cacheService.getCommonCahe("item_" + itemId);
         if (item == null) {
@@ -39,9 +42,6 @@ public class OrderService {
         if (promo == null) {
             throw new RuntimeException("活动未开始");
         }
-        if (!itemStockService.decreaseStockInRedis(itemId, amount,promoId)) {
-            throw new RuntimeException("库存不足");
-        }
         OrderInfo order = new OrderInfo();
         order.setItemId(itemId);
         order.setUserId(userId);
@@ -49,7 +49,6 @@ public class OrderService {
         order.setPromoId(promoId);
         order.setItemPrice(item.getPrice());
         order.setOrderPrice(promo.getPromoItemPrice());
-
         if (orderInfoMapper.insert(order) == 1) {
             stockLogService.changeStatus(stockLogId, 1);
             return true;
