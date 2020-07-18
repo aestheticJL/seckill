@@ -49,16 +49,9 @@ public class OrderController {
         if (userService.selectById(userId) == null) {
             throw new RuntimeException("用户不存在");
         }
-        Item item;
-        item = (Item) cacheService.getCommonCahe("item_" + itemId);
-        if (item == null) {
-            item = itemService.getItemById(itemId);
-            if (item == null) {
-                throw new RuntimeException("商品不存在");
-            } else {
-                cacheService.setCommonCache("item_" + itemId, item);
-            }
-        }
+
+        itemService.getItemByIdWithGuava(itemId);
+
         Promo promo = promoService.getPromoById(promoId);
         if (promo == null) {
             throw new RuntimeException("活动未开始");
@@ -72,10 +65,10 @@ public class OrderController {
 
     @PostMapping("/order")
     public RespBean createOrder(@RequestParam(name = "userId") Integer userId,
-                            @RequestParam(name = "itemId") Integer itemId,
-                            @RequestParam(name = "amount") Integer amount,
-                            @RequestParam(name = "promoId", required = false) Integer promoId,
-                            @RequestParam(name = "promoToken", required = false) String promoToken) {
+                                @RequestParam(name = "itemId") Integer itemId,
+                                @RequestParam(name = "amount") Integer amount,
+                                @RequestParam(name = "promoId", required = false) Integer promoId,
+                                @RequestParam(name = "promoToken", required = false) String promoToken) {
         if (!orderCreateRateLimiter.tryAcquire()) {
             throw new RuntimeException("活动太火爆，请稍后再试");
         }

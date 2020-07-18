@@ -28,7 +28,12 @@ public class PromoService {
 
     @Cacheable(cacheNames = "promo", key = "#promoId", unless = "#result==null")
     public Promo getPromoById(Integer promoId) {
-        return promoMapper.selectById(promoId);
+        while (true) {
+            if (redisTemplate.opsForValue().setIfAbsent("RedisLock_Promo_" + promoId, System.currentTimeMillis(), 10L, TimeUnit.SECONDS)) {
+                return promoMapper.selectById(promoId);
+            }
+            Thread.yield();
+        }
     }
 
     public RespBean createPromo(Promo promo) {

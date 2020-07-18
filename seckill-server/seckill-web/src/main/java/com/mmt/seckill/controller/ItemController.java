@@ -18,15 +18,9 @@ public class ItemController {
     @Autowired
     private CacheService cacheService;
 
-    @GetMapping("/{id}")
-    public Item getItemById(@PathVariable("id") int id) {
-        Item item;
-        item = (Item) cacheService.getCommonCahe("item_" + id);
-        if (item == null) {
-            item = itemService.getItemById(id);
-            cacheService.setCommonCache("item_" + id, item);
-        }
-        return item;
+    @GetMapping("/{itemId}")
+    public Item getItemById(@PathVariable("itemId") int itemId) {
+        return itemService.getItemByIdWithGuava(itemId);
     }
 
     @GetMapping("/")

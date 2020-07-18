@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @CacheConfig(cacheNames = "item")
@@ -17,9 +19,35 @@ public class ItemService {
     @Autowired
     private ItemMapper itemMapper;
 
-    @Cacheable(key = "#id", unless = "#result==null")
-    public Item getItemById(int id) {
-        return itemMapper.selectById(id);
+    @Autowired
+    private CacheService cacheService;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    public Item getItemByIdWithGuava(int itemId) {
+        Item item;
+        item = (Item) cacheService.getCommonCahe("item_" + itemId);
+        if (item == null) {
+            item = getItemByIdWithRedis(itemId);
+            if (item == null) {
+                throw new RuntimeException("商品不存在");
+            } else {
+                cacheService.setCommonCache("item_" + itemId, item);
+            }
+        }
+        return item;
+    }
+
+    @Cacheable(key = "#itemId", unless = "#result==null")
+    public Item getItemByIdWithRedis(int itemId) {
+        while (true) {
+            if (redisTemplate.opsForValue().setIfAbsent("RedisLock_Item_" + itemId, System.currentTimeMillis(), 10L, TimeUnit.SECONDS)) {
+                System.out.println("查了数据库");
+                return itemMapper.selectById(itemId);
+            }
+            Thread.yield();
+        }
     }
 
     @Cacheable(key = "'allItems'", unless = "#result==null")

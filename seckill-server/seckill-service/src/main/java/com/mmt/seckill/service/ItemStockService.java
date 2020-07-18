@@ -4,6 +4,7 @@ import com.mmt.seckill.mapper.ItemStockMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.concurrent.TimeUnit;
@@ -19,7 +20,7 @@ public class ItemStockService {
         return itemStockMapper.getItemStockByItemId(id);
     }
 
-    @Transactional
+    @Transactional(propagation = Propagation.NESTED)
     public boolean decreaseStockInRedis(int itemId, Integer amount, Integer promoId) {
         Long result = redisTemplate.opsForValue().decrement("promo" + promoId + "_item" + itemId + "_stock", amount.intValue());
         if (result > 0) {
@@ -29,8 +30,7 @@ public class ItemStockService {
             redisTemplate.opsForValue().set("promo_item_stock_invalid" + itemId, true, 60 * 60, TimeUnit.SECONDS);
             return true;
         } else {
-            redisTemplate.opsForValue().increment("promo" + promoId + "_item" + itemId + "_stock", amount.intValue());
-            return false;
+            throw new RuntimeException("库存不足");
         }
     }
 
