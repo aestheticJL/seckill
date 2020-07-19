@@ -1,5 +1,6 @@
 package com.mmt.seckill.service;
 
+import com.alibaba.fastjson.JSON;
 import com.mmt.seckill.mapper.PromoMapper;
 import com.mmt.seckill.model.Item;
 import com.mmt.seckill.model.ItemStock;
@@ -25,15 +26,36 @@ public class PromoService {
     private RedisTemplate redisTemplate;
     @Autowired
     private UserService userService;
+    @Autowired
+    private CacheService cacheService;
 
-    @Cacheable(cacheNames = "promo", key = "#promoId", unless = "#result==null")
     public Promo getPromoById(Integer promoId) {
-        while (true) {
-            if (redisTemplate.opsForValue().setIfAbsent("RedisLock_Promo_" + promoId, System.currentTimeMillis(), 10L, TimeUnit.SECONDS)) {
-                return promoMapper.selectById(promoId);
+        Promo promo;
+        promo = (Promo) cacheService.getCommonCahe("Promo_" + promoId);
+        if (promo == null) {
+            while (true) {
+                promo = (Promo) redisTemplate.opsForValue().get("Promo_" + promoId);
+                if (promo != null) {
+                    System.out.println("查了缓存");
+                    break;
+                }
+                if (redisTemplate.opsForValue().setIfAbsent("RedisLock_Promo_" + promoId, System.currentTimeMillis(), 10L, TimeUnit.SECONDS)) {
+                    System.out.println("查了数据库");
+                    promo = promoMapper.selectById(promoId);
+                    redisTemplate.opsForValue().set("Promo_" + promoId, promo);
+                    redisTemplate.delete("RedisLock_Promo_" + promoId);
+                    break;
+                }
             }
-            Thread.yield();
+            if (promo == null) {
+                throw new RuntimeException("活动不存在");
+            } else {
+                cacheService.setCommonCache("Promo_" + promoId, promo);
+            }
+        }else {
+            System.out.println("查了本地缓存");
         }
+        return promo;
     }
 
     public RespBean createPromo(Promo promo) {

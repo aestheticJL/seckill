@@ -3,6 +3,7 @@ package com.mmt.seckill.config.redis;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
@@ -21,21 +22,28 @@ import java.util.Map;
 
 @Configuration
 public class RedisConfig implements Serializable {
-    @Bean
-    public RedisTemplate redisTemplate(RedisConnectionFactory redisConnectionFactory) {
-        RedisTemplate redisTemplate = new RedisTemplate();
-        redisTemplate.setConnectionFactory(redisConnectionFactory);
-
-        //首先解决key的序列化方式
-        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
-        redisTemplate.setKeySerializer(stringRedisSerializer);
-
-        //解决value的序列化方式
-        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
-        redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
-
-        return redisTemplate;
-    }
+//    @Bean
+//    public RedisTemplate redisTemplate(RedisConnectionFactory redisConnectionFactory){
+//        RedisTemplate redisTemplate = new RedisTemplate();
+//        redisTemplate.setConnectionFactory(redisConnectionFactory);
+//
+//        //首先解决key的序列化方式
+//        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+//        redisTemplate.setKeySerializer(stringRedisSerializer);
+//
+//        //解决value的序列化方式
+//        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
+//
+//        ObjectMapper objectMapper =  new ObjectMapper();
+//
+//        objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+//
+//        jackson2JsonRedisSerializer.setObjectMapper(objectMapper);
+//
+//        redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
+//
+//        return redisTemplate;
+//    }
 
     /**
      * 最新版，设置redis缓存过期时间

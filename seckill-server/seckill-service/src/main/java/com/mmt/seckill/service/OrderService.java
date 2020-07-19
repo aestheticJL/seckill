@@ -24,7 +24,7 @@ public class OrderService {
 
     @Transactional(propagation = Propagation.NESTED)
     public boolean createOrder(int userId, Integer itemId, Integer amount, Integer promoId, String stockLogId) throws InterruptedException {
-        Item item = itemService.getItemByIdWithGuava(itemId);
+        Item item = itemService.getItemById(itemId);
         Promo promo = promoService.getPromoById(promoId);
         if (promo == null) {
             throw new RuntimeException("活动未开始");

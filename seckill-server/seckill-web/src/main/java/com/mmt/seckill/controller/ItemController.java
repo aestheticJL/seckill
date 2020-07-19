@@ -20,7 +20,7 @@ public class ItemController {
 
     @GetMapping("/{itemId}")
     public Item getItemById(@PathVariable("itemId") int itemId) {
-        return itemService.getItemByIdWithGuava(itemId);
+        return itemService.getItemById(itemId);
     }
 
     @GetMapping("/")

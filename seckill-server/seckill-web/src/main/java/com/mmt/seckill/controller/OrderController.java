@@ -1,7 +1,6 @@
 package com.mmt.seckill.controller;
 
 import com.google.common.util.concurrent.RateLimiter;
-import com.mmt.seckill.model.Item;
 import com.mmt.seckill.model.Promo;
 import com.mmt.seckill.service.*;
 import com.mmt.seckill.service.rocketMQ.MqProducer;
@@ -50,7 +49,7 @@ public class OrderController {
             throw new RuntimeException("用户不存在");
         }
 
-        itemService.getItemByIdWithGuava(itemId);
+        itemService.getItemById(itemId);
 
         Promo promo = promoService.getPromoById(promoId);
         if (promo == null) {
