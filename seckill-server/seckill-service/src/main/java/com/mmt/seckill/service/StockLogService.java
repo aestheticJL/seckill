@@ -18,11 +18,11 @@ public class StockLogService {
 
     public String createStockLog(Integer itemId, Integer amount) {
         String stockLogId = UUID.randomUUID().toString().replace("-", "");
-        redisTemplate.opsForValue().set(stockLogId, 0, 60, TimeUnit.SECONDS);
+        redisTemplate.opsForValue().set("stockLogId_" + stockLogId, 0, 60, TimeUnit.SECONDS);
         return stockLogId;
     }
 
     public void changeStatus(String stockLogId, Integer status) {
-        redisTemplate.opsForValue().set(stockLogId, status,60,TimeUnit.SECONDS);
+        redisTemplate.opsForValue().set("stockLogId_" + stockLogId, status, 60 * 60, TimeUnit.SECONDS);
     }
 }

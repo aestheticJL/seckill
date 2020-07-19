@@ -45,7 +45,8 @@ public class MqConsumer {
                 Map<String, Object> map = JSON.parseObject(jsonMessage, Map.class);
                 int itemId = (int) map.get("itemId");
                 int amount = (int) map.get("amount");
-                itemStockService.decreaseStockInMySQL(itemId, amount);
+                String stockLogId = (String) map.get("stockLogId");
+                itemStockService.decreaseStockInMySQL(itemId, amount,stockLogId);
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
             }
         });

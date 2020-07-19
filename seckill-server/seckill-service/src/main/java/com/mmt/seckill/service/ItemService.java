@@ -42,6 +42,7 @@ public class ItemService {
                     redisTemplate.delete("RedisLock_Item_" + itemId);
                     break;
                 }
+                Thread.yield();
             }
             if (item == null) {
                 throw new RuntimeException("商品不存在");

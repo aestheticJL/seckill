@@ -15,6 +15,8 @@ public class ItemStockService {
     private ItemStockMapper itemStockMapper;
     @Autowired
     private RedisTemplate redisTemplate;
+    @Autowired
+    private StockLogService stockLogService;
 
     public Integer getItemStockByItemId(int id) {
         return itemStockMapper.getItemStockByItemId(id);
@@ -34,8 +36,11 @@ public class ItemStockService {
         }
     }
 
-
-    public boolean decreaseStockInMySQL(int itemId, int amount) {
+    @Transactional
+    public boolean decreaseStockInMySQL(int itemId, int amount, String stockLogId) {
+        Integer status = (Integer) redisTemplate.opsForValue().get("stockLogId" + stockLogId);
+        if (status == 2) return true;
+        else stockLogService.changeStatus(stockLogId, 2);
         return itemStockMapper.decreaseStockInMySQL(itemId, amount);
     }
 }

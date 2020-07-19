@@ -46,6 +46,7 @@ public class PromoService {
                     redisTemplate.delete("RedisLock_Promo_" + promoId);
                     break;
                 }
+                Thread.yield();
             }
             if (promo == null) {
                 throw new RuntimeException("活动不存在");

@@ -27,8 +27,6 @@ public class OrderController {
     @Autowired
     private UserService userService;
     @Autowired
-    private CacheService cacheService;
-    @Autowired
     private ItemService itemService;
 
     private ThreadPoolExecutor threadPoolExecutor;

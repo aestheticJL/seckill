@@ -71,7 +71,7 @@ public class MqProducer {
                 String jsonMessage = new String(messageExt.getBody());
                 Map<String, Object> map = JSON.parseObject(jsonMessage, Map.class);
                 String stockLogId = (String) map.get("stockLogId");
-                Integer status = (Integer) redisTemplate.opsForValue().get(stockLogId);
+                Integer status = (Integer) redisTemplate.opsForValue().get("stockLogId" + stockLogId);
                 if (status == null) {
                     return LocalTransactionState.UNKNOW;
                 }
